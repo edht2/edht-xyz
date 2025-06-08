@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <span class="title"><h1>{% block title %} Ed is very cooooool {% endblock %}</h1></span>
+    <div class="content">
+        {% if name %}
+            <h2>Welcome: {{name}}</h2>
+        {% endif %}
+        
+    </div>
+{% endblock %}
