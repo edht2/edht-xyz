@@ -1,0 +1,26 @@
+.logo {
+    width: 6rem;
+    height: auto;
+    position: left;
+}
+a {
+    text-decoration: none;
+    color: #111111;
+    letter-spacing: 1.5px;
+}
+.nav_bar {
+    overflow: hidden;
+    display: inline-block;
+}
+.nav_bar_item {
+    display: inline-block;
+    padding: 8px
+}
+
+.nav_list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+    

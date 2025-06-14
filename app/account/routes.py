@@ -23,6 +23,8 @@ def signup():
         db.session.commit()
         # save the new account to the db
 
+        user.hash_passphrase(passphrase)
+
         login_user(user)
         # login the user
 

@@ -1,0 +1,28 @@
+
+.form_full_bar {
+    width: 100%;
+}
+
+.form_div {
+    width: 18.7rem;
+    text-align: center;
+    display: block;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.side_by_side {
+    text-align: center;
+    display: flex;
+    gap: 2px;
+}
+
+.name_fl {
+    width: 10rem;
+}
+
+#submit_button {
+    width: 18.7rem;
+    boarder-radius: 2px;
+    margin: 0;
+}

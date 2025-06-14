@@ -18,9 +18,6 @@ def create_app(config_class=Config):
     app.register_blueprint(account)
 
     with app.app_context():
-        db.drop_all()
-        db.create_all()
-        # refreshes the db, helpful for develoment
 
         from app.models.account import Account
         from flask_login import current_user
@@ -32,10 +29,10 @@ def create_app(config_class=Config):
         user = Account(
             first_name="Ed",
             last_name="Haig-Thomas",
-            email="ehaigthomas@gmail.com",
+            email="ed",
             passphrase=None
         )
-        user.hash_passphrase("ediscool")
+        user.hash_passphrase("a")
         db.session.add(user)
         db.session.commit()
 

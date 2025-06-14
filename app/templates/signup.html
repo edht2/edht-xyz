@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 
+{% block headers %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='forms.css')}}">
+{% endblock %}
+
+{% block title %} Sign-Up {% endblock %}
+
 {% block content %}
 
-<form method="post">
-    <input name="first_name" id="fname" type="text" placeholder="first name">
-    <input name="last_name"id="lname" type="text" placeholder="last name">
-    <input name="email" id="email" type="email" placeholder="email">
-    <input name="passphrase"id="passphrase" type="password" placeholder="passphrase">
-    <input type="submit">
-</form>
-
+<script src="../static/signup.js"></script>
+<div class="form_div">
+    <form method="post", onSubmit="return validate_form()">
+        <div class="side_by_side">
+            <input name="first_name" class="name_fl" id="first_name" type="text" placeholder="first name">
+            <input name="last_name" class="name_fl" id="last_name" type="text" placeholder="last name">
+        </div>
+        <input name="email" class="form_full_bar" id="email" type="email" placeholder="email">
+        <input name="passphrase" class="form_full_bar" id="passphrase" type="password" placeholder="passphrase">
+        <input type="submit" value="Sign-Up" id="submit_button">
+    </form>
+</div>
 {% endblock %}
