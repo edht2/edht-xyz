@@ -1,16 +1,16 @@
 .logo {
     width: 6rem;
     height: auto;
-    position: left;
+    display: flex;
 }
 a {
     text-decoration: none;
     color: #111111;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
 .nav_bar {
     overflow: hidden;
-    display: inline-block;
 }
 .nav_bar_item {
     display: inline-block;
@@ -21,6 +21,6 @@ a {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    text-align: center;
+    text-align: right;
 }
     

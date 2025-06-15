@@ -24,6 +24,7 @@ def signup():
         # save the new account to the db
 
         user.hash_passphrase(passphrase)
+        # hash and add the passphrase
 
         login_user(user)
         # login the user
