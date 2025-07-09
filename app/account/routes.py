@@ -1,4 +1,5 @@
 from app.account import account
+from app.account.validators import validate_signup
 from flask import render_template, request, url_for, redirect, flash
 from app.extensions import db
 from app.models.account import Account
@@ -6,30 +7,44 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 @account.route('/signup', methods=['GET', 'POST'])
 def signup():
+
     if current_user.is_authenticated:
-        # if they are already signed in
+        # if the user is already signed in send them to index
         return redirect(url_for('main.index'))
 
     if request.method == 'POST':
-        # when the signin form is submitted
+        # when the sign-up form is submitted
+
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
         email = request.form.get('email')
         passphrase = request.form.get('passphrase')
 
-        user = Account(first_name=first_name, last_name=last_name, email=email, passphrase=None)
-        # create new account
-        db.session.add(user)
-        db.session.commit()
-        # save the new account to the db
+        results = validate_signup(first_name, last_name, email)
+        # validate the sign-up credentials
 
-        user.hash_passphrase(passphrase)
-        # hash and add the passphrase
+        if results["summary"]:
+            # if the credentials were invalid
+            
+            flash(results)
 
-        login_user(user)
-        # login the user
+            print(results)
 
-        return redirect(url_for('main.index'))
+        else:
+            user = Account(first_name=first_name, last_name=last_name, email=email, passphrase=None)
+            # create new account
+
+            db.session.add(user)
+            db.session.commit()
+            # save the new account to the db
+
+            user.hash_passphrase(passphrase)
+            # hash and add the passphrase
+
+            login_user(user)
+            # login the user
+
+            return redirect(url_for('main.index'))
 
     return render_template('signup.html')
 

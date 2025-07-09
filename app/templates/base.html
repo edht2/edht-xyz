@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css')}}">
 </head>
-<body>
+<body class="{% block page %}{% endblock %}">
     <nav class="nav">
-        <img src="{{ url_for('static', filename='edht_logo.jpg') }}" class="logo">
+        <img onclick="window.location.href='/'" src="{{ url_for('static', filename='edht_logo.png') }}" alt="logo" class="logo">
         <ul class="nav_list">
             {% if not current_user.is_authenticated %}
                 <li class="nav_bar_item"><a href="/signin">Sign-in</a></li>

@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 
+{% block title %} Introducion {% endblock %}  
+{% block page %}index{% endblock %}
+
 {% block content %}
-    <span class="title"><h1>{% block title %} index {% endblock %}</h1></span>
+    <div class="main_title">
+Unlock new potential with<br>
+Our advanced learning models.
+    </div>
     <div class="content">
         {% if name %}
             <h2>Welcome: {{name}}</h2>
         {% endif %}
-
-        <iframe src="https://app-polytrack.kodub.com/0.5.0/?" width="800" height="450"></iframe>
         
     </div>
 {% endblock %}

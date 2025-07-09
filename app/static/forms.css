@@ -1,28 +1,42 @@
-
-.form_full_bar {
-    width: 100%;
+input {
+    background-color: white;
+    border-color: #ccc;
+    height: 3vh;
+    border-radius: 8px;
 }
 
-.form_div {
-    width: 18.7rem;
+.form_full_bar {
+   margin-bottom: 0.4rem;
+   display: flex;
+   flex-direction: column;
+}
+
+.form_container {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: white;
+    display: inline-block;
     text-align: center;
-    display: block;
-    margin: auto;
-    margin-top: 2rem;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 6rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form_title {
+    text-align: center;
+    color: white;
+    font-weight: 1000;
+    font-size: 2rem;
 }
 
 .side_by_side {
-    text-align: center;
     display: flex;
-    gap: 2px;
-}
-
-.name_fl {
-    width: 10rem;
+    margin-bottom: 0.4rem;
+    gap: 0.4rem;
 }
 
 #submit_button {
-    width: 18.7rem;
-    boarder-radius: 2px;
-    margin: 0;
+    background-image: linear-gradient(to right, #77e, #007);
+    height: 4vh;
 }

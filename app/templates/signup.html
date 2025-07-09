@@ -5,19 +5,34 @@
 {% endblock %}
 
 {% block title %} Sign-Up {% endblock %}
+{% block page %}signup{% endblock %}
 
 {% block content %}
 
 <script src="../static/signup.js"></script>
-<div class="form_div">
-    <form method="post", onSubmit="return validate_form()">
-        <div class="side_by_side">
-            <input name="first_name" class="name_fl" id="first_name" type="text" placeholder="first name">
-            <input name="last_name" class="name_fl" id="last_name" type="text" placeholder="last name">
-        </div>
-        <input name="email" class="form_full_bar" id="email" type="email" placeholder="email">
-        <input name="passphrase" class="form_full_bar" id="passphrase" type="password" placeholder="passphrase">
-        <input type="submit" value="Sign-Up" id="submit_button">
+
+<div class="form_container">
+    <form method="post">
+        <h2>Sign-up</h2>
+        {% with results = get_flashed_messages(with_categories=True) %}
+        {% if results %} Results!! {% endif %}
+            <div class="side_by_side">
+                <input name="first_name" class="adjacent_item" id="first_name" type="text" placeholder="first name">
+                <input name="last_name" class="adjacent_item" id="last_name" type="text" placeholder="last name">        
+            </div>
+            {% if results %}
+               <div class="validation_fail">{{ results["name_results"] }}Hello world</div>
+            {% endif %}
+            <div class="form_full_bar">
+                <input name="email" class="form_full_bar" id="email" type="email" placeholder="email">
+                {% if results %}
+                    <div class="validation_fail">{{ results["email_results"] }}Hello world</div>
+                {% endif %}
+                <input name="passphrase" class="form_full_bar" id="passphrase" type="password" placeholder="passphrase">
+                <input type="submit" value="Sign-Up" id="submit_button">
+            </div>
+        {% endwith %}
     </form>
 </div>
+
 {% endblock %}
