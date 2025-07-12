@@ -1,35 +1,35 @@
 {% extends 'base.html' %}
 
 {% block headers %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='forms.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css')}}">
 {% endblock %}
 
-{% block title %} Sign-Up {% endblock %}
+{% block title %}Sign-Up{% endblock %}
 {% block page %}signup{% endblock %}
 
 {% block content %}
 
-<script src="../static/signup.js"></script>
-
-<div class="form_container">
+<div class="form-container">
     <form method="post">
-        <h2>Sign-up</h2>
+        <h2>Create account</h2>
         {% with results = get_flashed_messages(with_categories=True) %}
-        {% if results %} Results!! {% endif %}
-            <div class="side_by_side">
-                <input name="first_name" class="adjacent_item" id="first_name" type="text" placeholder="first name">
-                <input name="last_name" class="adjacent_item" id="last_name" type="text" placeholder="last name">        
+            <div class="side-by-side">
+                <input name="first_name" class="side-by-side-left" id="first_name" type="text" placeholder="first name" value="{% if results %}{{ results[0][1]['first_name'] }}{% endif %}">
+                <input name="last_name" class="side-by-side-right" id="last_name" type="text" placeholder="last name" value="{% if results %}{{ results[0][1]['last_name'] }}{% endif %}">        
             </div>
-            {% if results %}
-               <div class="validation_fail">{{ results["name_results"] }}Hello world</div>
+            {% if results and results[0][1]["name_results"] %}
+               <div class="validation-fail">{{ results[0][1]["name_results"] }}</div>
             {% endif %}
-            <div class="form_full_bar">
-                <input name="email" class="form_full_bar" id="email" type="email" placeholder="email">
-                {% if results %}
-                    <div class="validation_fail">{{ results["email_results"] }}Hello world</div>
+            <div class="form-full-bar">
+                <input name="email" class="form-full-bar" id="email" type="email" placeholder="email" value="{% if results %}{{ results[0][1]['email'] }}{% endif %}">
+                {% if results and results[0][1]["email_results"] %}
+                    <div class="validation-fail">{{ results[0][1]["email_results"] }}</div>
                 {% endif %}
-                <input name="passphrase" class="form_full_bar" id="passphrase" type="password" placeholder="passphrase">
-                <input type="submit" value="Sign-Up" id="submit_button">
+                <input name="passphrase" class="form-full-bar" id="passphrase" type="password" placeholder="passphrase" value="{% if results %}{{ results[0][1]['passphrase'] }}{% endif %}">
+                {% if results and results[0][1]["passphrase_results"] %}
+                    <div class="validation-fail">{{ results[0][1]["passphrase_results"] }}</div>
+                {% endif %}
+                <input type="submit" value="Sign-Up" id="submit-button">
             </div>
         {% endwith %}
     </form>

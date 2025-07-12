@@ -1,18 +1,31 @@
 {% extends 'base.html' %}
 
 {% block headers %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='forms.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css')}}">
 {% endblock %}
 
-{% block title %} Sign-In {% endblock %}
+{% block title %}Sign-In{% endblock %}
 {% block page %}signin{% endblock %}
 
 {% block content %}
 
-<form method="post">
-    <input name="email" id="email" type="email" placeholder="email">
-    <input name="passphrase"id="passphrase" type="password" placeholder="passphrase">
-    <input type="submit">
-</form>
+<div class="form-container">
+    <form method="post">
+        <h2>Sign in</h2>
+        {% with results = get_flashed_messages(with_categories=True) %}
+
+            <div class="form-full-bar">
+
+                <input name="email" class="form-full-bar" id="email" type="email" placeholder="email" {% if results %}value="{{ results[0][1]['email'] }}"{% endif %}>
+                <input name="passphrase" class="form-full-bar" id="passphrase" type="password" placeholder="passphrase">
+                <input type="submit" value="Sign-In" id="submit-button">
+                {% if results and results[0][1] %}
+                    <div class="validation-fail">{{ results[0][1] }}</div>
+                {% endif %}
+            </div>
+        {% endwith %}
+        <p>New user? <a href="/signup">Create account.</a><p>
+    </form>
+</div>
 
 {% endblock %}

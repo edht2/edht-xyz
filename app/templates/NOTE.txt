@@ -1,0 +1,1 @@
+'home.html' is for signed-in users and 'index.html' is for un-signed-in users

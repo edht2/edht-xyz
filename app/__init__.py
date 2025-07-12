@@ -21,6 +21,11 @@ def create_app(config_class=Config):
 
         from app.models.account import Account
         from flask_login import current_user
+        
+        # REMOVE LATER
+        db.drop_all()
+        db.create_all()
+        # ***********
 
         @lm.user_loader
         def load_user(user_id):
