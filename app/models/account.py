@@ -23,7 +23,6 @@ class Account(UserMixin, db.Model):
 
     def validate_passphrase(self, passphrase: str) -> bool:
         """Checks if the provided passphrase matches the stored hash."""
-        print(f"ph: {passphrase.encode('utf8')}\nphh: {self.passphrase}")
         return bcrypt.checkpw(passphrase.encode('utf8'), self.passphrase)
 
     def __repr__(self):

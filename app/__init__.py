@@ -34,7 +34,7 @@ def create_app(config_class=Config):
         user = Account(
             first_name="Ed",
             last_name="Haig-Thomas",
-            email="ed",
+            email="e@g.c",
             passphrase=None
         )
         user.hash_passphrase("a")

@@ -61,19 +61,29 @@ def signup():
 
 @account.route('/signin', methods=['GET', 'POST'])
 def signin():
+    """ The sign-in page is a brief but cruicial page allowing users to access their account
+    On the page there are 2 input boxes - email and passphrase, if on the db there is an account
+    with the same email and passphrase; you get signed-in."""
+    
+    
     if current_user.is_authenticated:
-        # if they are signed in
+        """ if they are signed in they shouldn't be able to sign-in again as that would
+        cause problems. Therefore if you are signed-in you just get redirected to the
+        home page as if nothing happened."""
         return redirect(url_for('main.index'))
 
     if request.method == 'POST':
         # when the signin form is submitted
+        
         email = request.form.get('email')
         passphrase = request.form.get('passphrase')
+        # get email and passphrase from form
 
-        account: Account = Account.query.filter_by(email=email).all()
-
+        account: Account = Account.query.filter_by(email=email).first()
+        # find an account with a matching email
+                    
         if account and account.validate_passphrase(passphrase):
-            # check if the passphrase matches the email
+            # check if an account with that email exists and if so also check if the passphrase matches the passphrase
             
             login_user(account, remember=True)
             # signin the user
@@ -89,10 +99,12 @@ def signin():
             
     return render_template('signin.html')
 
+
 @login_required
 @account.route('/signout')
 def signout():
 
     logout_user()
+    #logout the user
 
     return redirect(url_for('main.index'))

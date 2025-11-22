@@ -1,0 +1,54 @@
+.fan {
+    display: flex;
+    margin-top: 60vh;
+    width: 100%;
+    height: 700px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 4vw;
+    padding: 0;
+}
+
+.fan-left {
+    width: 33.3%;
+    float: left;
+    display: inline;
+    background-color: #7c6c77;
+    margin: 0;
+}
+
+.fan-center {
+    width: 33.3%;
+    float: center;
+    display: inline;
+    background-color: #aaa694;
+    margin: 0;
+}
+
+.fan-right {
+    width: 33.4%;
+    float: center;
+    display: inline;
+    background-color: #d1d0a3;
+    margin: 0;
+}
+
+.fan-header {
+    position: absolute;
+    bottom: 100px;
+}
+
+/* 
+<div class="fan">
+    <div class='fan-left'>
+        <div class='fan-header'>Gubus</div>
+    </div>
+    <div class='fan-center'>
+        <div class='fan-header'>Nutmeg</div>
+    </div>
+    <div class='fan-right'>
+        <div class='fan-header'>Green</div>
+    </div>
+</div>
+ */
