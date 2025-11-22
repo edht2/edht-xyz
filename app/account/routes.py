@@ -12,7 +12,7 @@ def signup():
     and then appended to the database, it also signs-in the user after the account has been added """
 
 
-    if current_user.is_authenticated:
+    if current_user.is_authenticated: # user must be an admin too
         # if the user is already signed in send them to index as they should be able to sign-up while signed in
         return redirect(url_for('main.index'))
 
