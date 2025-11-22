@@ -13,7 +13,6 @@
         <ul class="nav_list">
             {% if not current_user.is_authenticated %}
                 <li class="nav_bar_item"><a class='nav-link' href="/signin">Sign-in</a></li>
-                <li class="nav_bar_item"><a class='nav-link' href="/signup">Sign-up</a></li>
             {% else %}
                 <li class="nav_bar_item"><a class='nav-link' href="/signout">Sign-out</a></li>
                 <li class="nav_bar_item"><a class='nav-link' href="#">Chat</a></li>
